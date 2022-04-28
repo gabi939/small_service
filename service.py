@@ -11,7 +11,7 @@ def service():
 
     if request.method == 'POST':
         data = request.data
-
+        print("I got message")
         try:
             os.remove("/tmp/temp.json")
         except Exception:
@@ -24,7 +24,7 @@ def service():
         return 200
 
     else:
-
+        print("lets return a message")
         try:
             with open("/tmp/temp.json", "r") as file:
                 data = json.load(file)
@@ -37,7 +37,7 @@ def service():
 
 @app.route("/api/update")
 def service_update():
-
+    print("Got updated")
     data = request.data
 
     try:
@@ -49,4 +49,4 @@ def service_update():
         json.dump(data, file)
 
 
-app.run(host="34.121.14.255")
+app.run()
